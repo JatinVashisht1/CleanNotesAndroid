@@ -2,6 +2,7 @@ package com.jatinvashisht.cleannotes.features.featureNote.data.local.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
+import com.jatinvashisht.cleannotes.features.featureNote.domain.converters.IConverter
 
 /**
  * Concrete implementation of *IConverter* interface.

@@ -1,4 +1,4 @@
-package com.jatinvashisht.cleannotes.features.featureNote.data.local.converters
+package com.jatinvashisht.cleannotes.features.featureNote.domain.converters
 
 /**
  * Interface containing method definitions to convert a data of **type A** to **type B**

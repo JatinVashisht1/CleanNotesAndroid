@@ -13,6 +13,8 @@ import javax.inject.Singleton
  * Singleton Object containing methods to resolve dependencies.
  *
  * Installed in *SingletonComponent*, therefore available in whole application.
+ *
+ * @author Jatin Vashisht (https://www.github.com/jatinvashisht1)
  * */
 @Module
 @InstallIn(SingletonComponent::class)
