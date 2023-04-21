@@ -2,7 +2,7 @@ package com.jatinvashisht.cleannotes.di
 
 import android.app.Application
 import androidx.room.Room
-import com.jatinvashisht.cleannotes.features.featureNote.data.local.NoteDatabase
+import com.jatinvashisht.cleannotes.features.featureNote.data.local.database.NoteDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

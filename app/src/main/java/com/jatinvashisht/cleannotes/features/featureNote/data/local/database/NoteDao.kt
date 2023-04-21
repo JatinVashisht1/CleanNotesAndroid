@@ -1,4 +1,4 @@
-package com.jatinvashisht.cleannotes.features.featureNote.data.local
+package com.jatinvashisht.cleannotes.features.featureNote.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Delete
