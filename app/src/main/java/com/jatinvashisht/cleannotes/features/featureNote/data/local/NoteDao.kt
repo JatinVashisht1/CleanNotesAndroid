@@ -44,6 +44,14 @@ interface NoteDao {
     suspend fun deleteNoteByTitle(title: String)
 
     /**
+     * suspend function to delete a list of notes by their respective titles.
+     *
+     * @param [title] List of String containing titles of each note to delete.
+     * */
+    @Query("DELETE FROM notetable WHERE title = :title")
+    suspend fun deleteNoteByTitleList(title: List<String>)
+
+    /**
      * suspend function to get a not by its title.
      *
      * @param [title] title of note.
