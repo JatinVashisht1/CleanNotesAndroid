@@ -7,7 +7,7 @@ import com.jatinvashisht.cleannotes.features.featureNote.domain.model.NoteModel
  *
  * @author Jatin Vashisht (https://www.github.com/jatinvashisht1)
  * */
-interface IRepository {
+interface INoteRepository {
 
     /**
      * suspend function to get all notes from database as a List of [NoteModel].
