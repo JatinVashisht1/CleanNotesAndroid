@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
 
 /**
- * DAO to apply operations on **NoteDatabase**.
+ * DAO to apply operations on **[NoteDatabase]**.
  *
  * @author Jatin Vashisht (https://www.github.com/jatinvashisht1)
  * */
@@ -18,12 +18,12 @@ interface NoteDao {
      * suspend function to get all notes in database.
      * @return List of NoteEntity.
      * */
-    @Query("SELECT * FROM notetable")
+    @Query("SELECT * FROM notetable ORDER BY primaryKey DESC")
     suspend fun getAllNotes() : List<NoteEntity>
 
     /**
      * suspend function to insert new note.
-     * @param [newNotes] List of notes to insert.
+     * @param [newNotes] List of [NoteEntity] to insert.
      * */
     @Insert(NoteEntity::class, onConflict = REPLACE)
     suspend fun insertNote(newNotes: List<NoteEntity>)
@@ -31,7 +31,7 @@ interface NoteDao {
 
     /**
      * suspend function to delete a note.
-     * @param [notesToDelete] list of notes to be deleted.
+     * @param [notesToDelete] list of [NoteEntity] to be deleted.
      * */
     @Delete(NoteEntity::class)
     suspend fun deleteNoteByNoteEntity(notesToDelete: List<NoteEntity>)
@@ -42,4 +42,20 @@ interface NoteDao {
      * */
     @Query("DELETE FROM notetable WHERE title = :title")
     suspend fun deleteNoteByTitle(title: String)
+
+    /**
+     * suspend function to get a not by its title.
+     *
+     * @param [title] title of note.
+     * */
+    @Query("SELECT * from notetable WHERE title = :title LIMIT 1")
+    suspend fun getNoteByTitle(title: String): NoteEntity
+
+    /**
+     * suspend function to get a not by its title.
+     *
+     * @param [titleList] titles of note in a List.
+     * */
+    @Query("SELECT * FROM notetable WHERE title = :titleList")
+    suspend fun getAllNotesByTitleList(titleList: List<String>): List<NoteEntity>
 }
