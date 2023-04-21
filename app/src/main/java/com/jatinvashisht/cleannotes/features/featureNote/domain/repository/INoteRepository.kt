@@ -37,9 +37,9 @@ interface INoteRepository {
     /**
      * suspend function to insert a note in database.
      *
-     * @param [noteModel] note of type [NoteModel] to insert in database.
+     * @param [listNoteModel] note of type List<[NoteModel]> to insert in database.
      * */
-    suspend fun insertNote(noteModel: NoteModel)
+    suspend fun insertNotes(listNoteModel: List<NoteModel>)
 
 
     /**

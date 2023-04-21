@@ -3,6 +3,8 @@ package com.jatinvashisht.cleannotes.di
 import android.app.Application
 import androidx.room.Room
 import com.jatinvashisht.cleannotes.features.featureNote.data.local.database.NoteDatabase
+import com.jatinvashisht.cleannotes.features.featureNote.data.local.repository.NoteRepositoryImpl
+import com.jatinvashisht.cleannotes.features.featureNote.domain.repository.INoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +23,7 @@ import javax.inject.Singleton
 object AppModule {
 
     /**
-     * Method to provide dependency of **NoteDatabase**.
+     * Method to provide dependency of **[NoteDatabase]**.
      *
      * @param [app] Application object, provided by hilt.
      *
@@ -35,5 +37,18 @@ object AppModule {
             NoteDatabase::class.java,
             NoteDatabase.DATABASE_NAME,
         )
-        .build()
+            .build()
+
+
+    /**
+     * Method to provide dependency of [INoteRepository].
+     *
+     * @param [noteDatabase] of type [NoteDatabase], injected/provided by hilt.
+     *
+     * @return Object of [INoteRepository].
+     * */
+    @Provides
+    @Singleton
+    fun provideNoteRepository(noteDatabase: NoteDatabase): INoteRepository =
+        NoteRepositoryImpl(noteDatabase = noteDatabase)
 }

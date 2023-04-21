@@ -2,6 +2,9 @@ package com.jatinvashisht.cleannotes.features.featureNote.data.local.repository
 
 import com.jatinvashisht.cleannotes.features.featureNote.data.local.database.NoteDao
 import com.jatinvashisht.cleannotes.features.featureNote.data.local.database.NoteDatabase
+import com.jatinvashisht.cleannotes.features.featureNote.data.local.database.NoteEntity
+import com.jatinvashisht.cleannotes.features.featureNote.data.local.mapper.toNoteEntity
+import com.jatinvashisht.cleannotes.features.featureNote.data.local.mapper.toNoteModel
 import com.jatinvashisht.cleannotes.features.featureNote.domain.model.NoteModel
 import com.jatinvashisht.cleannotes.features.featureNote.domain.repository.INoteRepository
 import javax.inject.Inject
@@ -15,26 +18,49 @@ class NoteRepositoryImpl @Inject constructor(noteDatabase: NoteDatabase) : INote
     }
 
     override suspend fun getAllNotes(): List<NoteModel> {
-        TODO("Not yet implemented")
+        val allNotes = noteDao.getAllNotes()
+        val allNotesNoteModel = mutableListOf<NoteModel>()
+
+        allNotes.forEach{
+            it.toNoteModel()
+            allNotesNoteModel.add(it.toNoteModel())
+        }
+
+        return allNotesNoteModel
     }
 
     override suspend fun getNoteByTitle(title: String): NoteModel {
-        TODO("Not yet implemented")
+        val noteEntity = noteDao.getNoteByTitle(title = title)
+
+        return noteEntity.toNoteModel()
     }
 
     override suspend fun getAllNotesByTitleList(titleList: List<String>): List<NoteModel> {
-        TODO("Not yet implemented")
+        val allNoteListEntity = noteDao.getAllNotesByTitleList(titleList = titleList)
+        val allNoteListModel = mutableListOf<NoteModel>()
+
+        allNoteListEntity.forEach {
+            allNoteListModel.add(it.toNoteModel())
+        }
+
+        return allNoteListModel
     }
 
-    override suspend fun insertNote(noteModel: NoteModel) {
-        TODO("Not yet implemented")
+    override suspend fun insertNotes(listNoteModel: List<NoteModel>) {
+        val listNoteEntity = mutableListOf<NoteEntity>()
+
+        listNoteModel.forEach {
+            listNoteEntity.add(it.toNoteEntity())
+        }
+
+        noteDao.insertNote(listNoteEntity)
     }
 
     override suspend fun deleteNoteByTitle(title: String) {
-        TODO("Not yet implemented")
+        noteDao.deleteNoteByTitle(title = title)
     }
 
     override suspend fun deleteNoteByTitleList(title: List<String>) {
-        TODO("Not yet implemented")
+        noteDao.deleteNoteByTitleList(title = title)
     }
 }
