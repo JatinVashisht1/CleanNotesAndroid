@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.jatinvashisht.cleannotes.features.featureNote.presentation.insertNoteScreen.InsertNoteScreen
 import com.jatinvashisht.cleannotes.ui.theme.CleanNotesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
+                    InsertNoteScreen()
                 }
             }
         }

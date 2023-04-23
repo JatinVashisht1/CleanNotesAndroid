@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clean Notes</string>
     <string name="InsertNoteTitlePlaceholderText">Add Title</string>
     <string name="InsertNoteTitleLabelText">Title</string>
-    <string name="InsertNoteBodyPlaceholderText">Add Note Body</string>
     <string name="InsertNoteBodyLabelText">Body</string>
+    <string name="InsertNoteBodyPlaceholderText">Add Note Body</string>
 </resources>
