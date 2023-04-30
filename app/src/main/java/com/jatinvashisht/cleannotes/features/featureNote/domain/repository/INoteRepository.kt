@@ -53,4 +53,6 @@ interface INoteRepository {
      * @param [title] List of String containing titles of each note to delete.
      * */
     suspend fun deleteNoteByTitleList(title: List<String>)
+
+    suspend fun getAllDistinctCategories(): List<String>
 }

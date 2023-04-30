@@ -2,6 +2,7 @@ package com.jatinvashisht.cleannotes.features.featureNote.presentation.insertNot
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +22,7 @@ fun InsertNoteScreen(insertNoteViewModel: InsertNoteViewModel = hiltViewModel())
                 ReusableTextField(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(MyPaddingValues.small),
+                        .padding(horizontal = MyPaddingValues.medium),
                     textFieldValue = titleText,
                     onTextFieldValueChange = insertNoteViewModel::onTitleTextFieldValueChange,
                     placeholderText = stringResource(id = R.string.InsertNoteTitlePlaceholderText),
@@ -33,12 +34,21 @@ fun InsertNoteScreen(insertNoteViewModel: InsertNoteViewModel = hiltViewModel())
                 ReusableTextField(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(MyPaddingValues.small),
+                        .padding(horizontal = MyPaddingValues.medium),
                     textFieldValue = bodyText,
                     onTextFieldValueChange = insertNoteViewModel::onBodyTextFieldValueChange,
                     placeholderText = stringResource(id = R.string.InsertNoteBodyPlaceholderText),
                     labelText = stringResource(id = R.string.InsertNoteBodyLabelText)
                 )
+                Spacer(modifier = Modifier.height(MyPaddingValues.medium))
+                Button(
+                    onClick = insertNoteViewModel::insertNote, modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(horizontal = MyPaddingValues.medium)
+                ) {
+                    Text("Insert note")
+                }
             }
         }
     }

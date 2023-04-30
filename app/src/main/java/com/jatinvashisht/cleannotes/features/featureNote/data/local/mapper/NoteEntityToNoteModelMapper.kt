@@ -13,6 +13,6 @@ import com.jatinvashisht.cleannotes.features.featureNote.domain.model.NoteModel
 fun NoteEntity.toNoteModel(): NoteModel = NoteModel(
     title = title,
     body = body,
-    categories = categories,
+    category = category,
     tags = tags,
 )

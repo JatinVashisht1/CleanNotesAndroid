@@ -66,4 +66,7 @@ interface NoteDao {
      * */
     @Query("SELECT * FROM notetable WHERE title = :titleList")
     suspend fun getAllNotesByTitleList(titleList: List<String>): List<NoteEntity>
+
+    @Query("SELECT DISTINCT category FROM notetable")
+    suspend fun getAllDistinctCategories(): List<String>
 }

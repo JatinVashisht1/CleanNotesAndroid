@@ -17,7 +17,7 @@ import javax.inject.Inject
  * */
 class GetAllNotesUseCase @Inject constructor(private val noteRepository: INoteRepository){
     private val logger = Timber.tag("GetAllNotesUseCase")
-    operator fun invoke() : Flow<Resource<List<NoteModel>>> = flow {
+    suspend operator fun invoke() : Flow<Resource<List<NoteModel>>> = flow {
         try {
             emit(Resource.Loading<List<NoteModel>>())
 

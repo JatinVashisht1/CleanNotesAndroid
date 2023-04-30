@@ -63,4 +63,8 @@ class NoteRepositoryImpl @Inject constructor(noteDatabase: NoteDatabase) : INote
     override suspend fun deleteNoteByTitleList(title: List<String>) {
         noteDao.deleteNoteByTitleList(title = title)
     }
+
+    override suspend fun getAllDistinctCategories(): List<String> {
+        return noteDao.getAllDistinctCategories()
+    }
 }
